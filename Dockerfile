@@ -11,6 +11,8 @@ COPY index.php /app/default/index.php
 COPY config.json /config.json
 COPY entrypoint.sh /entrypoint.sh
 
+RUN chmod +x /entrypoint.sh
+
 EXPOSE 8300
 
 CMD /entrypoint.sh
