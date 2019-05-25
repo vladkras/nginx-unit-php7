@@ -5,8 +5,11 @@ services:
 
 before_install:
   - docker build -t vladkras/nginx-unit-php7 .
-  - docker run -d -p 80:8300 --name unit vladkras/nginx-unit-php7 &&
-    docker exec -it unit curl -X PUT -d @/config.json
+  - docker run -d -p 80:8300 --name unit vladkras/nginx-unit-php7
+  - docker ps
+  - docker logs unit
+  - docker exec -it unit top -n 1
+  - docker exec -it unit curl -X PUT -d @/config.json
     --unix-socket /run/control.unit.sock
     http://localhost/config/
 

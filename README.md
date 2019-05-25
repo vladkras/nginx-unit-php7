@@ -1,4 +1,5 @@
 ## Docker NGINX Unit + PHP 7
+[![Build Status](https://travis-ci.org/vladkras/nginx-unit-php7.svg?branch=master)](https://travis-ci.org/vladkras/nginx-unit-php7)
 
 ### What is this?
 Docker image with NGINX Unit and PHP 7 module installed.
