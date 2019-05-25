@@ -1,11 +1,14 @@
+language: bash
+
 services:
   - docker
 
 before_install:
+  - docker build -t vladkras/nginx-unit-php7 .
   - docker run -d -p 80:8300 --name unit vladkras/nginx-unit-php7
 
 install:
-  - docker exec unit curl -X PUT -d @/config.json --unix-socket /run/control.unit.sock
+  - docker exec -it unit curl -X PUT -d @/config.json --unix-socket /run/control.unit.sock http://localhost/config/
 
 script:
   - curl -I http://localhost
