@@ -7,7 +7,6 @@
   "applications": {
     "default": {
       "type": "php",
-      "workers": 10,
       "root": "/app/default",
       "index": "index.php"
     }

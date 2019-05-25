@@ -1,4 +1,4 @@
-FROM vladkras/nginx-unit-base
+FROM vladkras/nginx-unit-base:latest
 
 RUN apk add --update --no-cache php7-dev php7-embed
 
@@ -9,10 +9,9 @@ RUN make install
 
 COPY index.php /app/default/index.php
 COPY config.json /config.json
-COPY entrypoint.sh /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
+RUN mkdir -p state/certs/
 
 EXPOSE 8300
 
-CMD /entrypoint.sh
+CMD ["/opt/unit/sbin/unitd", "--no-daemon", "--control", "unix:/var/run/control.unit.sock", "--modules", "/opt/unit/modules"]
